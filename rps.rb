@@ -18,7 +18,7 @@ class Rock_paper_scissors
   
   def play_rock_paper_scissors
     @player_choices = ["", ""]
-    @cpu_choices = ["1", "1"]
+    @cpu_choices = ["", ""]
     @win_rps_player = nil # プレイヤーのじゃんけんの勝敗を表すbool値
     
     puts "「じゃんけん...」"
@@ -110,12 +110,16 @@ class Rock_paper_scissors
         puts "対戦を終了します"
         exit
       end
+      @cpu_choices[0] = Random.rand(1..3).to_s
+      
     when "look_this_way"
       @player_choices[1] = gets.chomp
       if @@look_this_way_choice_hash.key?(@player_choices[1].to_sym) == false # 入力不正チェック
         puts "入力が間違っています"
         exit
       end
+      @cpu_choices[1] = Random.rand(1..4).to_s
+      
     else
       puts "引数のゲーム名が間違っています"
       exit
